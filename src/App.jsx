@@ -8,6 +8,7 @@ const App = () => {
   const [countries, setCountries] = useState([])
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
+  const [favorites, setFavorites] = useState([])
 
   const getCountries = async () => {
     try {
@@ -26,6 +27,10 @@ const App = () => {
     }
   }
 
+    const addFavorites = (country) => {
+      setFavorites([...favorites, country])
+    }
+
   return (
     <Container className="my-5">
       <h1 className="text-center mb-4">Country Explorer 🌍</h1>
@@ -38,8 +43,11 @@ const App = () => {
 
       <p>Stai cercando: {search}</p>
 
-      <CountryCard countries={countries} />
-      
+      <CountryCard 
+      countries={countries}
+      addFavorites={addFavorites}
+      />
+
     </Container>
   )
 }

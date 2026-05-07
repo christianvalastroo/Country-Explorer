@@ -11,6 +11,7 @@ const App = () => {
   const [loading, setLoading] = useState(false)
   const [favorites, setFavorites] = useState([])
 
+  // Recupera i paesi in base al testo cercato
   const getCountries = async () => {
     try {
       setLoading(true)
@@ -28,8 +29,17 @@ const App = () => {
     }
   }
 
+  // Aggiunge un paese alla lista dei preferiti
   const addFavorites = (country) => {
     setFavorites([...favorites, country])
+  }
+
+  // Rimuove dai preferiti il paese selezionato
+  const removeFavorites = (country) => {
+    const filteredFavorites = favorites.filter(
+      (favorite) => favorite.cca3 !== country.cca3
+    )
+    setFavorites(filteredFavorites)
   }
 
   return (
@@ -53,7 +63,10 @@ const App = () => {
         addFavorites={addFavorites}
       />
 
-      <Favorites favorites={favorites} />
+      <Favorites
+        favorites={favorites}
+        removeFavorites={removeFavorites}
+      />
 
     </Container>
   )

@@ -1,6 +1,7 @@
 const CountryCard = ({ countries, addFavorites }) => {
     return (
         <>
+            {/* Mostra una card per ogni paese trovato */}
             {countries.map((country) => (
                 <div key={country.cca3} className="border rounded p-3 mb-3">
                     <h3>{country.name.common}</h3>

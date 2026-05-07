@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Container } from "react-bootstrap"
 import SearchBar from "./components/SearchBar/SearchBar"
 import CountryCard from "./components/CountryCard/CountryCard"
+import Favorites from "./components/Favorites/Favorites"
 
 const App = () => {
   const [search, setSearch] = useState("")
@@ -27,9 +28,9 @@ const App = () => {
     }
   }
 
-    const addFavorites = (country) => {
-      setFavorites([...favorites, country])
-    }
+  const addFavorites = (country) => {
+    setFavorites([...favorites, country])
+  }
 
   return (
     <Container className="my-5">
@@ -43,10 +44,16 @@ const App = () => {
 
       <p>Stai cercando: {search}</p>
 
-      <CountryCard 
-      countries={countries}
-      addFavorites={addFavorites}
+      {loading && <p>Caricamento...</p>}
+
+      {error && <p className="text-danger">{error}</p>}
+
+      <CountryCard
+        countries={countries}
+        addFavorites={addFavorites}
       />
+
+      <Favorites favorites={favorites} />
 
     </Container>
   )

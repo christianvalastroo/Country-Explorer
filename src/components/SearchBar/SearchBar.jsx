@@ -13,7 +13,7 @@ const SearchBar = ({ search, setSearch, getCountries }) => {
                 className="btn btn-dark w-100"
                 onClick={getCountries}
             >
-                Search
+                Cerca
             </button>
         </>
     )
